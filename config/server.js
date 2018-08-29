@@ -1,12 +1,14 @@
 var express = require('express');
 var consign = require('consign');
 var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
 
 var app = express();
 app.set('view engine', 'ejs'); // Altera o view engine que o express está utilizando para EJS
 app.set('views', './app/views'); // Altera o diretório de views
 
 app.use(bodyParser.urlencoded({extended : true})); //middleware bodyparser, parametro extende permite que seja implementado através de json as urls codificadas
+app.use(expressValidator());
 
 consign()   //autoload
     .include('app/routes')
